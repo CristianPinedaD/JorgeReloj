@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Reloj Manual</title>
+  <style>
+
+    @font-face {
+      font-family: 'DigitalNumbers'; 
+      src: url('./fonts/DS-DIGIB.TTF') format('truetype');
+    }
+
+    body {
+      background-color: #0B1622;
+      color: #8B0000;
+      font-family: 'DigitalNumbers', sans-serif;
+      font-size: 120px;
+      text-align: center;
+      margin-top: 40vh;
+    }
+
+    #clock span {
+      padding: 0 10px;
+    }
+
+    .faded {
+      color: #8B0000;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="clock">
+    <span id="hours">23</span>:<span id="minutes">26</span>:<span class="faded" id="seconds">10</span>
+  </div>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+
+    // Update the clock immediately and then every second
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+
+</html>
